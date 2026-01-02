@@ -1,0 +1,38 @@
+import math
+
+# quadratic temperature model: T(t) = at^2 + bt + c
+a = 1.0
+b = -6.0
+c = 8.0
+
+# discriminant
+d = b*b - 4*a*c
+
+if d >= 0:
+    time1 = (-b + math.sqrt(d)) / (2*a)
+    time2 = (-b - math.sqrt(d)) / (2*a)
+
+    # select positive time
+    if time1 > 0:
+        time = time1
+    elif time2 > 0:
+        time = time2
+    else:
+        print("Calculation not possible")
+        exit()
+
+    # temperature calculation
+    temperature = a*time*time + b*time + c
+
+    print("At time %f temperature is %f" % (time, temperature))
+
+    # season classification
+    if temperature < 20:
+        print("Season: Winter")
+    elif temperature > 40:
+        print("Season: Summer")
+    else:
+        print("Season: Spring / Monsoon")
+
+else:
+    print("Calculation not possible")
